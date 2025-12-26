@@ -4,10 +4,12 @@ const config: CapacitorConfig = {
   appId: 'app.lovable.c103375c19cc45ac966261ffdfe95621',
   appName: 'MA Al-Ittifaqiah',
   webDir: 'dist',
-  server: {
-    url: 'https://c103375c-19cc-45ac-9662-61ffdfe95621.lovableproject.com?forceHideBadge=true',
-    cleartext: true
-  },
+  // Remove server.url for production - app will use bundled assets from dist/
+  // Uncomment below for development with hot-reload:
+  // server: {
+  //   url: 'https://c103375c-19cc-45ac-9662-61ffdfe95621.lovableproject.com?forceHideBadge=true',
+  //   cleartext: true
+  // },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2500,
