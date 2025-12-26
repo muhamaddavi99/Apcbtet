@@ -1,20 +1,12 @@
-import type { CapacitorConfig } from '@capacitor/cli';
-
 const config: CapacitorConfig = {
   appId: 'app.lovable.c103375c19cc45ac966261ffdfe95621',
   appName: 'MA Al-Ittifaqiah',
   webDir: 'dist',
-  // Remove server.url for production - app will use bundled assets from dist/
-  // Uncomment below for development with hot-reload:
-  server: {
-  url: '127.0.0.1',
-  cleartext: true,
-  allowNavigation: ['*']
-  },
+
   plugins: {
     SplashScreen: {
       launchShowDuration: 2500,
-      launchAutoHide: false,
+      launchAutoHide: true,
       launchFadeOutDuration: 500,
       backgroundColor: '#16a34a',
       androidSplashResourceName: 'splash',
@@ -33,15 +25,10 @@ const config: CapacitorConfig = {
       presentationOptions: ['badge', 'sound', 'alert'],
     },
   },
+
   android: {
     allowMixedContent: true,
     captureInput: true,
     webContentsDebuggingEnabled: false,
   },
-  ios: {
-    contentInset: 'automatic',
-    scrollEnabled: true,
-  },
 };
-
-export default config;
