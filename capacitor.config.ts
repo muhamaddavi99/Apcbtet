@@ -13,7 +13,7 @@ const config: CapacitorConfig = {
   plugins: {
     SplashScreen: {
       launchShowDuration: 2500,
-      launchAutoHide: false,
+      launchAutoHide: true,
       launchFadeOutDuration: 500,
       backgroundColor: '#16a34a',
       androidSplashResourceName: 'splash',
@@ -35,7 +35,7 @@ const config: CapacitorConfig = {
   android: {
     allowMixedContent: true,
     captureInput: true,
-    webContentsDebuggingEnabled: false,
+    webContentsDebuggingEnabled: true,
   },
   ios: {
     contentInset: 'automatic',
