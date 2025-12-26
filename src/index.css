@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* School theme - Hijau Putih MA Al-Ittifaqiah 2 */
+    --background: 0 0% 100%;
+    --foreground: 142 70% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 142 70% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 70% 15%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 142 20% 96%;
+    --secondary-foreground: 142 70% 15%;
+
+    --muted: 142 20% 96%;
+    --muted-foreground: 142 16% 47%;
+
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 142 31% 91%;
+    --input: 142 31% 91%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 142 76% 36%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 142 86% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 142 86% 32%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 142 86% 28%;
+    --sidebar-ring: 142 76% 36%;
+  }
+
+  .dark {
+    --background: 142 50% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 142 40% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 142 40% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 142 30% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 142 30% 18%;
+    --muted-foreground: 142 20% 65%;
+
+    --accent: 142 30% 18%;
+    --accent-foreground: 0 0% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 142 30% 18%;
+    --input: 142 30% 18%;
+    --ring: 142 76% 45%;
+    
+    --sidebar-background: 142 76% 36%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 142 86% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 142 86% 32%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 142 86% 28%;
+    --sidebar-ring: 142 76% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Smooth theme transition - always active for seamless switching */
+  html {
+    --theme-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Base transitions for common properties */
+  body,
+  .bg-background,
+  .bg-card,
+  .bg-popover,
+  .bg-primary,
+  .bg-secondary,
+  .bg-muted,
+  .bg-accent,
+  .bg-sidebar,
+  [class*="bg-"] {
+    transition: background-color var(--theme-transition),
+                border-color var(--theme-transition),
+                color var(--theme-transition);
+  }
+
+  /* Text color transitions */
+  .text-foreground,
+  .text-muted-foreground,
+  .text-primary,
+  .text-secondary-foreground,
+  [class*="text-"] {
+    transition: color var(--theme-transition);
+  }
+
+  /* Border transitions */
+  .border,
+  .border-border,
+  [class*="border-"] {
+    transition: border-color var(--theme-transition);
+  }
+
+  /* Enhanced transitioning class for complete coverage */
+  html.transitioning,
+  html.transitioning *,
+  html.transitioning *::before,
+  html.transitioning *::after {
+    transition: background-color var(--theme-transition), 
+                border-color var(--theme-transition), 
+                color var(--theme-transition),
+                fill var(--theme-transition),
+                stroke var(--theme-transition),
+                box-shadow var(--theme-transition),
+                opacity 0.2s ease !important;
+    transition-delay: 0s !important;
+  }
+
+  /* Prevent layout shift during transition */
+  html.transitioning {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Theme transition overlay - smooth fade effect */
+.theme-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-transition-overlay.active {
+  opacity: 1;
+}
+
+/* Light mode: fade to white when switching themes */
+html:not(.dark) .theme-transition-overlay {
+  background: linear-gradient(
+    135deg,
+    hsl(142 76% 36% / 0.15) 0%,
+    hsl(0 0% 100% / 0.95) 50%,
+    hsl(142 76% 36% / 0.15) 100%
+  );
+  backdrop-filter: blur(4px);
+}
+
+/* Dark mode: fade to dark when switching themes */
+html.dark .theme-transition-overlay {
+  background: linear-gradient(
+    135deg,
+    hsl(142 76% 36% / 0.2) 0%,
+    hsl(142 50% 8% / 0.95) 50%,
+    hsl(142 76% 36% / 0.2) 100%
+  );
+  backdrop-filter: blur(4px);
+}
+
+/* Platform-specific styles */
+.platform-android {
+  /* Android-specific styles */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.platform-ios {
+  /* iOS-specific styles - respect safe areas */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  padding-top: var(--safe-area-top);
+  padding-bottom: var(--safe-area-bottom);
+}
+
+.platform-android header,
+.platform-ios header {
+  padding-top: var(--safe-area-top);
+}
+
+/* Native app badge animation */
+@keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(0 84.2% 60.2% / 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px hsl(0 84.2% 60.2% / 0);
+  }
+}
+
+.notification-badge {
+  animation: badge-pulse 2s infinite;
+}

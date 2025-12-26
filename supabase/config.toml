@@ -1,0 +1,40 @@
+project_id = "nrhaktkrljotddjfrbve"
+
+[functions.send-reset-password]
+verify_jwt = false
+
+[functions.notify-teacher-schedule]
+verify_jwt = false
+
+[functions.delete-user]
+verify_jwt = true
+
+[functions.mark-teachers-not-teaching]
+verify_jwt = false
+
+[functions.auto-alpha-attendance]
+verify_jwt = false
+
+[functions.send-schedule-notification]
+verify_jwt = false
+
+[functions.send-push-notification]
+verify_jwt = false
+
+[functions.system-status]
+verify_jwt = false
+
+[functions.ai-assistant]
+verify_jwt = false
+
+[functions.attendance-reminder]
+verify_jwt = false
+
+[functions.ai-crud]
+verify_jwt = false
+
+[functions.ai-generate-image]
+verify_jwt = false
+
+[functions.ai-edit-image]
+verify_jwt = false
