@@ -6,10 +6,11 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   // Remove server.url for production - app will use bundled assets from dist/
   // Uncomment below for development with hot-reload:
-  // server: {
-  //   url: 'https://c103375c-19cc-45ac-9662-61ffdfe95621.lovableproject.com?forceHideBadge=true',
-  //   cleartext: true
-  // },
+  server: {
+  url: '127.0.0.1',
+  cleartext: true,
+  allowNavigation: ['*']
+  },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2500,
